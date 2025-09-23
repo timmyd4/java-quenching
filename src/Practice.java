@@ -11,7 +11,20 @@ public class Practice {
      * @return the sum of the odd numbers in the array
      */
     public static int oddSum(int[] nums) {
-        return 0;
+
+        int oddCount = 0;
+
+        if(nums == null) return 0;
+
+        for(int items: nums)
+        {
+            if(items % 2 != 0)
+            {
+                oddCount += items;
+            }
+        }
+
+        return oddCount;
     }
 
     /**
