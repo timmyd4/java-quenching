@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -70,9 +72,18 @@ public class Practice {
      */
     public static Set<String> adults(Map<String, Integer> ages) {
         if(ages == null) throw new NullPointerException();
+        Set<String> people = new HashSet<>();
+
+        for(Map.Entry<String, Integer> items : ages.entrySet())
+        {
+            if(items.getValue() >= 18)
+            {
+                people.add(items.getKey());
+            }
+        }
 
 
-        return null;
+        return people;
     }
 
     /**
@@ -83,7 +94,21 @@ public class Practice {
      * @throws IllegalArgumentException if head is null
      */
     public static int biggestNumber(ListNode<Integer> head) {
-        return 0;
+        
+        if(head == null) throw new IllegalArgumentException();
+        
+        int biggest = Integer.MIN_VALUE;
+        ListNode<Integer> current = head;
+        while(current != null)
+        {
+            if(biggest < current.data)
+            {
+                biggest = current.data;
+            }
+            current = current.next;
+        }
+
+        return biggest;
     }
 
     /**
@@ -100,7 +125,19 @@ public class Practice {
      * @return a frequency map of values in the list
      */
     public static <T> Map<T, Integer> frequencies(ListNode<T> head) {
-        return null;
+        Map<T, Integer> map = new HashMap<>();
+        
+
+        if(head == null) return map;
+        ListNode<T> current = head;
+        while(current != null) 
+        {
+            map.put(current.data, map.getOrDefault(current.data, 0) + 1);
+            current = current.next;
+        }
+
+
+        return map;
     }
 
 
