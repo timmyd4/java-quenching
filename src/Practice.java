@@ -190,7 +190,7 @@ public class Practice {
 
         Queue<BinaryTreeNode<Integer>> q = new LinkedList<>();
         q.add(root);
-        int target = 0;
+        int target = 1;
 
         while(!q.isEmpty())
         {
@@ -200,15 +200,16 @@ public class Practice {
             for(int i = 0; i < size; i++)
             {
                 BinaryTreeNode<Integer> current = q.poll();
-                
+                if(target == level) sumed += current.data;
                 if(current.left != null) q.add(current.left);  
                 if(current.right != null) q.add(current.right);  
             }
 
+            if(target == level) return sumed;
             target++;
             
         }
-        return sumed;
+        return 0;
     }
 
 
