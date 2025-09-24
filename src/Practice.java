@@ -304,8 +304,18 @@ public class Practice {
         if(visited.contains(start)) return 0;
         visited.add(start);
 
-        
+        int count = 0;
 
-        return 0;
+        if(start.neighbors.isEmpty())
+        {
+            count++;
+        }
+
+        for(Vertex<Integer> neighbor: start.neighbors)
+        {
+            count += sinkCountDFS(neighbor, visited);
+        }
+
+        return count;
     }
 }
