@@ -224,7 +224,34 @@ public class Practice {
      * @return true if the sums are equal, false otherwise
      */
     public static boolean sumMatch(BinaryTreeNode<Integer> root, ListNode<Integer> head) {
-        return false;
+
+        if(head == null && root == null) return true;
+        if(root == null) return false;
+        if(head == null) return false;
+
+        Queue<BinaryTreeNode<Integer>> q = new LinkedList<>();
+        q.add(root);
+        int BSTSum = 0;
+
+        while(!q.isEmpty())
+        {
+            BinaryTreeNode<Integer> current = q.poll();
+            BSTSum += current.data;
+            if(current.left != null) q.add(current.left);
+            if(current.right != null) q.add(current.right);
+        }
+
+        ListNode<Integer> current = head;
+        int LNSum = 0;
+
+        while(current != null)
+        {
+            LNSum += current.data;
+            current = current.next;
+        }
+
+
+        return BSTSum == LNSum;
     }
 
     /**
