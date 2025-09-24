@@ -294,6 +294,18 @@ public class Practice {
      * @return the count of vertices with outdegree 0
      */
     public static int sinkCount(Vertex<Integer> start) {
+        if(start == null) return 0;
+        Set<Vertex<Integer>> visited = new HashSet<>();
+        return sinkCountDFS(start, visited);
+    }
+
+    public static int sinkCountDFS(Vertex<Integer> start, Set<Vertex<Integer>> visited)
+    {
+        if(visited.contains(start)) return 0;
+        visited.add(start);
+
+        
+
         return 0;
     }
 }
