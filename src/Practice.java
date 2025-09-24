@@ -264,7 +264,25 @@ public class Practice {
      * @return the sum of all the vertices
      */
     public static int graphSum(Vertex<Integer> start) {
-        return 0;
+
+        if(start == null) return 0;
+        Set<Vertex<Integer>> visited = new HashSet<>();
+        return dfs(start, visited);
+    }
+
+
+    public static int dfs(Vertex<Integer> start, Set<Vertex<Integer>> visited)
+    {
+        if(visited.contains(start)) return 0;
+        visited.add(start);
+
+        int sum = start.data;
+
+        for(Vertex<Integer> neighbor: start.neighbors)
+        {
+            sum += dfs(neighbor, visited);
+        }
+        return sum;
     }
 
     /**
